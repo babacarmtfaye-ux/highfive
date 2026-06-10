@@ -1,0 +1,85 @@
+:root {
+    --hero-image: url("../images/ja.jpeg");
+    --page-bg: #1E2020;
+    --ink: #E3E3E3;
+    --muted: #efc8ba;
+    --accent: #ffb18d;
+    --accent-deep: #6d2e17;
+    --orange: #f06c19;
+    --field: #c8c8c8;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    min-height:100%;
+    overflow:hidden;
+}
+
+body{
+
+    margin:0;
+    background:var(--page-bg);
+    color:var(--ink);
+    font-family:Hanken Grotesk, Arial, Helvetica, sans-serif;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.app-view{
+    display:none;
+    min-height:100svh;
+    height:100svh;
+    overflow:hidden;
+}
+
+.app-view.is-active{
+    display:block;
+}
+
+
+img.is-hidden{
+    display:none !important;
+}
+
+.img-fallback{
+    display:none;
+}
+
+.img-fallback.is-visible{
+    display:flex;
+}
+
+.avatar-fallback{
+    background:linear-gradient(135deg,var(--accent),#c06543);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+.avatar-fallback img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+
+.logo-fallback{
+    background:linear-gradient(135deg,#1b1b20,#0c0c0e);
+}

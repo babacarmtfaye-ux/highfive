@@ -1,0 +1,403 @@
+:root {
+    /* Place ton image dans assets/images puis remplace "none" par url("../images/ton-image.jpg"). */
+    --hero-image: url("../images/ja.jpeg");
+    --page-bg: #1E2020;
+    --ink: #E3E3E3;
+    --muted: #efc8ba;
+    --accent: #ffb18d;
+    --accent-deep: #6d2e17;
+    --orange: #f06c19;
+    --field: #c8c8c8;
+}
+.split-screen {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--page-bg);
+    overflow: hidden;
+}
+
+.hero-panel {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    background: var(--page-bg);
+}
+
+.hero-image-slot {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 58% 44%, rgba(255, 155, 95, 0.14), transparent 0 16%, transparent 36%),
+        linear-gradient(90deg, rgba(5, 8, 9, 0.18), rgba(5, 8, 9, 0.58)),
+        linear-gradient(140deg, rgba(255, 255, 255, 0.08), transparent 25%),
+        var(--hero-image),
+        linear-gradient(135deg, #151a19 0%, #090d0f 55%, #171b1a 100%);
+    background-position: center;
+    background-size: cover;
+    filter: saturate(0.92) contrast(1.04);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(7, 11, 12, 0.08) 0%, rgba(7, 11, 12, 0.18) 50%, rgba(7, 11, 12, 0.76) 100%),
+        radial-gradient(circle at 19% 58%, rgba(255, 126, 60, 0.22), transparent 0 5%, transparent 15%),
+        radial-gradient(circle at 54% 15%, rgba(255, 185, 130, 0.13), transparent 0 9%, transparent 32%),
+        linear-gradient(0deg, rgba(3, 5, 6, 0.62), rgba(3, 5, 6, 0.08) 44%, rgba(3, 5, 6, 0.55));
+    pointer-events: none;
+}
+
+.hero-content {
+    position: absolute;
+    left: 132px;
+    bottom: 163px;
+    width: min(460px, calc(100% - 180px));
+    z-index: 1;
+}
+
+.hero-content h1 {
+    margin: 0 0 12px;
+    color: var(--accent);
+    font-family: "Bebas Neue", "Arial Narrow", Impact, Haettenschweiler, sans-serif;
+    font-size: 72px;
+    font-weight: 325.95;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.hero-content p {
+    margin: 0;
+    max-width: 470px;
+    color: #f3f0eb;
+    font-size: 18px;
+    font-family: "Hanken Grotesk", Arial, Helvetica, sans-serif;
+    line-height: 1.45;
+}
+
+.stat-chips {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 19px;
+}
+
+.stat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    height: 20px;
+    padding: 0 8px;
+    border: 1px solid rgba(255, 197, 169, 0.55);
+    color: #ece8e1;
+    background: rgba(18, 22, 21, 0.42);
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 9px;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.chip-icon {
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+}
+
+
+
+.live-icon::after {
+    width: 2px;
+    height: 2px;
+    top: 4px;
+    left: 1px;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.sync-icon::before,
+.sync-icon::after {
+    width: 7px;
+    height: 1px;
+    top: 4px;
+    left: 1px;
+    background: var(--orange);
+    transform: rotate(-38deg);
+}
+
+.sync-icon::after {
+    transform: rotate(38deg);
+}
+
+.login-panel {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 42px;
+    background: var(--page-bg);
+}
+
+.login-card {
+    width: 380px;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    padding: 44px 48px 42px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    background: var(--page-bg);
+    box-shadow: 0 42px 66px rgba(0, 0, 0, 0.28);
+}
+
+.login-header {
+    margin: 0;
+}
+
+.logo-slot {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ffae83;
+    border-radius: 7px;
+    background: linear-gradient(180deg, #1d2221, #151918);
+    overflow: hidden;
+}
+
+.logo-slot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.logo-slot img[src=""] {
+    display: none;
+}
+
+.login-header h2 {
+    display: block;
+    width: max-content;
+    margin: 0 0 5px;
+    color: #ecebe6;
+    font-family: "Arial Narrow", Impact, Haettenschweiler, sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0;
+    transform: scaleX(0.74);
+    transform-origin: left center;
+}
+
+.login-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.48;
+}
+
+.login-form {
+    margin-top: 42px;
+}
+
+.field-group + .field-group {
+    margin-top: 22px;
+}
+
+.field-group label {
+    display: block;
+    margin: 0 0 6px 3px;
+    color: #f0c7b6;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.field-group.error input {
+    border: 1px solid #ff4d4d;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.2);
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 6px;
+    display: block;
+    min-height: 14px;
+}
+
+.field {
+    position: relative;
+    height: 44px;
+    background: var(--field);
+}
+
+.field input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0 44px 0 64px;
+    color: #252525;
+    background: transparent;
+    font-size: 12px;
+    line-height: 44px;
+}
+
+.field input:focus {
+    box-shadow: inset 0 0 0 2px rgba(255, 177, 141, 0.68);
+}
+
+.field-icon,
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.field-icon {
+    left: 11px;
+    width: 12px;
+    height: 12px;
+    color: var(--accent);
+    opacity: 0.58;
+}
+
+.mail-icon {
+    border: 1px solid currentColor;
+    border-radius: 2px;
+}
+
+.mail-icon::before,
+.mail-icon::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    width: 8px;
+    height: 1px;
+    background: currentColor;
+}
+
+.mail-icon::before {
+    left: 1px;
+    transform: rotate(28deg);
+}
+
+.mail-icon::after {
+    right: 1px;
+    transform: rotate(-28deg);
+}
+
+.lock-icon {
+    left: 10px;
+    width: 10px;
+    height: 8px;
+    top: calc(50% + 2px);
+    border: 1px solid currentColor;
+    border-radius: 2px;
+}
+
+.lock-icon::before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: -7px;
+    width: 6px;
+    height: 7px;
+    border: 1px solid currentColor;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.password-toggle {
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    opacity: 0.48;
+    /* Transition d'opacité en CSS */
+    transition: opacity 0.2s ease;
+}
+
+.password-toggle.is-active {
+    opacity: 1;
+}
+
+.eye-icon {
+    position: relative;
+    width: 13px;
+    height: 8px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+}
+
+.eye-icon::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.forgot-link {
+    display: block;
+    width: max-content;
+    margin: 7px 2px 0 auto;
+    color: var(--accent);
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.submit-button {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 17px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--accent);
+    color: var(--accent-deep);
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #ffc09e;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: auto;
+    color: #efc8ba;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.login-footer a {
+    color: var(--accent);
+    font-weight: 800;
+}

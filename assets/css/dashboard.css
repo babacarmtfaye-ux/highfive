@@ -1,0 +1,745 @@
+/* DESIGN SYSTEM & VARIABLES */
+:root {
+    --main-bg: #0C0C0E;
+    --sidebar-bg: #0F0F12;
+    --card-bg: #151518;
+    --card-border: #222227;
+    --card-hover-border: #32323c;
+    --panel-bg: #1B1B20;
+    --panel-border: #2B2B33;
+
+    --accent-color: #FFB693;
+
+    /* Couleur icônes FontAwesome (si importées) */
+    --icon-color: #FFB693;
+    --accent-glow: rgba(232, 142, 107, 0.15);
+    --accent-hover: #F2A585;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E5E7EB;
+    --text-muted: #8E8E93;
+    --text-dark: #0C0C0E;
+
+    --transition-speed: 0.25s;
+    --border-radius-lg: 16px;
+    --border-radius-md: 8px;
+    --border-radius-sm: 4px;
+}
+
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--text-secondary);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Bebas+Neue&display=swap');
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--main-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* =====================================================
+   LAYOUT PRINCIPAL
+   sidebar (fixe) | zone-droite (flex-col : topbar + page)
+   ===================================================== */
+.dashboard-shell {
+    display: flex;
+}
+
+/* SIDEBAR — fixe à gauche, pleine hauteur */
+.dashboard-sidebar {
+    min-width: 175px;
+    flex: 2;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 16px;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* ZONE DROITE — prend tout le reste, colonne */
+.dashboard-main {
+    flex: 9;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg);
+    align-items: center;
+}
+
+/* TOPBAR — pleine largeur de la zone droite */
+.dashboard-topbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+    border-bottom: 1px solid var(--card-border);
+    background-color: var(--main-bg);
+    flex-shrink: 0;
+}
+
+/* PAGE — contenu centré avec max-width */
+.dashboard-page {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+}
+
+.dashboard-content {
+    width: 100%;
+    max-width: 976px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===================================================== */
+
+/* BRAND */
+.dashboard-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+
+.dashboard-brand-copy h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1.5px;
+    color: #FFB693;
+    line-height: 1;
+}
+
+.dashboard-brand-copy p {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* NAV */
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.dashboard-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #C8C6C5;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-speed) ease;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.nav-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+    transition: transform var(--transition-speed) ease;
+    flex-shrink: 0;
+}
+
+
+.nav-icon i {
+    color: inherit;
+}
+
+.dashboard-nav-item {
+    color: #C8C6C5;
+}
+
+.dashboard-nav-item i {
+    color: inherit;
+}
+
+.dashboard-nav-item.is-active {
+    color: #561F00;
+    background-color: #FFB693;
+}
+
+.dashboard-nav-item.is-active i {
+    color: #561F00;
+}
+
+
+.dashboard-nav-item:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dashboard-nav-item.is-active {
+    background-color: #FFB693;
+    color: #561F00;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(232, 142, 107, 0.3);
+}
+
+/* 👇 FORCER LES ICÔNES À PRENDRE LA COULEUR DU TEXTE */
+.dashboard-nav-item.is-active .nav-icon {
+    color: #561F00;
+    opacity: 1;
+}
+
+/* si tu utilises des emojis ou ::before */
+.dashboard-nav-item.is-active .nav-icon {
+    color: #561F00;
+}
+
+.dashboard-logout {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #FFB693;
+    border: 1.5px solid var(--accent-color);
+    color: #561F00;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all var(--transition-speed) ease;
+}
+
+.dashboard-logout:hover {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* TOPBAR — éléments internes */
+.dashboard-topbar-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2.5px;
+    color: #FFB693;
+}
+
+.dashboard-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.topbar-action {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    position: relative;
+}
+
+.topbar-action:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+}
+
+.topbar-action--search::before {
+    content: "🔍";
+    font-size: 17px;
+}
+
+/* icône cloche contrôlée par l'HTML (FontAwesome) */
+.topbar-action--bell::before {
+    content: "";
+    font-size: 17px;
+}
+
+.topbar-action--bell::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+.dashboard-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--panel-bg);
+    border: 1px dashed var(--text-muted);
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.dashboard-avatar:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+}
+
+/* PANELS */
+.dashboard-panel {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 28px;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.dashboard-panel:hover {
+    border-color: var(--card-hover-border);
+}
+
+.dashboard-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.dashboard-panel-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #FFB693;
+}
+
+.status-chip {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ============================================================= */
+/* BRACKET */
+.dashboard-panel--championship {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-bracket {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.dashboard-match-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dashboard-match-card {
+    width: 220px;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease;
+}
+
+.dashboard-match-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
+}
+
+.match-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.match-row:last-child {
+    border-bottom: none;
+}
+
+.match-row--winner {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.match-row--winner span,
+.match-row--winner strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.match-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+.bracket-connector {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--panel-border), transparent);
+    flex-shrink: 0;
+}
+
+.dashboard-final-card {
+    width: 220px;
+    background-color: var(--panel-bg);
+    border: 1.5px solid var(--accent-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0 20px rgba(232, 142, 107, 0.08);
+    overflow: hidden;
+}
+
+.dashboard-final-title {
+    background-color: rgba(232, 142, 107, 0.08);
+    border-bottom: 1.5px solid var(--accent-color);
+    padding: 9px 14px;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    color: var(--accent-color);
+    letter-spacing: 2.5px;
+}
+
+/* ============================================================= */
+
+/* GRILLE INFÉRIEURE */
+.dashboard-lower-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+.dashboard-panel--standings {
+    grid-column: span 8;
+}
+
+.dashboard-panel--upcoming {
+    grid-column: span 4;
+}
+
+/* CLASSEMENT */
+.standings-table {
+    width: 100%;
+}
+
+.standings-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.standings-panel-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.standings-link {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--transition-speed) ease;
+}
+
+.standings-link:hover {
+    color: var(--accent-color);
+}
+
+.standings-head {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px 44px 56px;
+    padding: 14px 0 10px;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.standings-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px 44px 56px;
+    padding: 15px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+    align-items: center;
+}
+
+.standings-row.is-highlighted {
+    background-color: rgba(255, 255, 255, 0.015);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.standings-row.is-muted {
+    color: var(--text-muted);
+}
+
+.standings-row span:first-child {
+    font-weight: 500;
+}
+
+.standings-row.is-highlighted span:first-child {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent-color);
+}
+
+.standings-row span:last-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.standings-row.is-highlighted span:last-child {
+    color: var(--accent-color);
+}
+
+/* À VENIR */
+.upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.upcoming-card {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--border-radius-md);
+    padding: 16px;
+    transition: all var(--transition-speed) ease;
+}
+
+.upcoming-card:hover {
+    border-color: var(--card-hover-border);
+    transform: translateX(2px);
+}
+
+.upcoming-card--live {
+    border: 1px solid rgba(232, 142, 107, 0.35);
+    background-color: rgba(232, 142, 107, 0.02);
+}
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(232, 142, 107, 0.1);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 3px 10px;
+    border-radius: var(--border-radius-sm);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    animation: pulse 2s infinite;
+}
+
+.live-badge::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.upcoming-time {
+    margin-bottom: 10px;
+}
+
+.upcoming-time small {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: block;
+}
+
+.upcoming-time strong {
+    display: block;
+    font-size: 17px;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.upcoming-scoreline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upcoming-teams {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.upcoming-teams span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+
+.upcoming-card--live .upcoming-teams span {
+    color: var(--text-primary);
+}
+
+.versus-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.upcoming-score {
+    display: flex;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.upcoming-card--live .upcoming-score {
+    color: var(--accent-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .dashboard-shell {
+        flex-direction: column;
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
+        padding: 20px;
+    }
+
+    .dashboard-brand {
+        flex-direction: row;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-topbar {
+        padding: 0 20px;
+    }
+
+    .dashboard-page {
+        padding: 20px;
+    }
+
+    .dashboard-bracket {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bracket-connector {
+        width: 2px;
+        height: 28px;
+        background: linear-gradient(180deg, var(--panel-border), transparent);
+        margin: 6px auto;
+    }
+
+    .standings-head,
+    .standings-row {
+        grid-template-columns: 36px 1fr 36px 36px 46px;
+        font-size: 11px;
+    }
+
+    .dashboard-lower-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .dashboard-panel--standings,
+    .dashboard-panel--upcoming {
+        grid-column: span 1;
+    }
+}
+
+/* FALLBACK images */
+.dashboard-brand-mark img,
+.dashboard-avatar {
+    background: linear-gradient(135deg, #222227, #151518);
+}
