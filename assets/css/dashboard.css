@@ -7,11 +7,9 @@
     --card-hover-border: #32323c;
     --panel-bg: #1B1B20;
     --panel-border: #2B2B33;
-
     --accent-color: #FFB693;
 
     /* Couleur icônes FontAwesome (si importées) */
-    --icon-color: #FFB693;
     --accent-glow: rgba(232, 142, 107, 0.15);
     --accent-hover: #F2A585;
 
@@ -61,10 +59,7 @@ body {
     background: var(--text-muted);
 }
 
-/* =====================================================
-   LAYOUT PRINCIPAL
-   sidebar (fixe) | zone-droite (flex-col : topbar + page)
-   ===================================================== */
+
 .dashboard-shell {
     display: flex;
 }
@@ -72,7 +67,7 @@ body {
 /* SIDEBAR — fixe à gauche, pleine hauteur */
 .dashboard-sidebar {
     min-width: 175px;
-    flex: 2;
+    flex: 1.8;
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--card-border);
     display: flex;
@@ -137,7 +132,7 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 32px;
     letter-spacing: 1.5px;
-    color: #FFB693;
+    color: var(--text-secondary);
     line-height: 1;
 }
 
@@ -195,7 +190,7 @@ body {
 
 .dashboard-nav-item.is-active {
     color: #561F00;
-    background-color: #FFB693;
+    background-color: var(--accent-color);
 }
 
 .dashboard-nav-item.is-active i {
@@ -209,7 +204,7 @@ body {
 }
 
 .dashboard-nav-item.is-active {
-    background-color: #FFB693;
+    background-color: var(--accent-color);
     color: #561F00;
     font-weight: 700;
     box-shadow: 0 4px 15px rgba(232, 142, 107, 0.3);
@@ -221,7 +216,6 @@ body {
     opacity: 1;
 }
 
-/* si tu utilises des emojis ou ::before */
 .dashboard-nav-item.is-active .nav-icon {
     color: #561F00;
 }
@@ -229,7 +223,7 @@ body {
 .dashboard-logout {
     margin-top: auto;
     padding: 10px;
-    background-color: #FFB693;
+    background-color: var(--accent-color);
     border: 1.5px solid var(--accent-color);
     color: #561F00;
     font-family: 'Hanken Grotesk', sans-serif;
@@ -253,7 +247,7 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 32px;
     letter-spacing: 2.5px;
-    color: #FFB693;
+    color: var(--accent-color);
 }
 
 .dashboard-topbar-actions {
@@ -345,13 +339,13 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 22px;
     letter-spacing: 2px;
-    color: #FFB693;
+    color: var(--text-secondary);
 }
 
 .status-chip {
     background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
     padding: 5px 12px;
     border-radius: 50px;
     font-size: 10px;
@@ -403,18 +397,32 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.match-row:last-child {
+.match-row2 {
     border-bottom: none;
+    opacity: calc(50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 16px;
+    align-items: center;
+
+
+}
+
+.matchr1 {
+    color: #E2BFB0;
+    font-family: Hanken Grotesk;
+
 }
 
 .match-row--winner {
-    background-color: rgba(255, 255, 255, 0.02);
+    background: linear-gradient(to right, #1E2020, #121414);
 }
 
-.match-row--winner span,
+
 .match-row--winner strong {
     color: var(--text-primary);
     font-weight: 600;
+    color: var(--accent-color);
 }
 
 .match-dot {
@@ -588,7 +596,7 @@ body {
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
     padding: 3px 10px;
-    border-radius: var(--border-radius-sm);
+    border-radius: 50px;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -604,6 +612,19 @@ body {
     background-color: var(--accent-color);
     border-radius: 50%;
     display: inline-block;
+}
+
+.nbre1 {
+    color: var(--accent-color);
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.nbre2 {
+    display: flex;
+    justify-content: flex-end;
+
 }
 
 @keyframes pulse {
@@ -640,8 +661,19 @@ body {
 .upcoming-scoreline {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
+
+.upcoming-scoreline1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.upcoming-scoreline1--right {
+    padding-left: 28px;
+}
+
 
 .upcoming-teams {
     display: flex;

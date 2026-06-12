@@ -1,7 +1,7 @@
 import { clearCurrentUser } from "../auth.js";
 
 export function dashboardPage() {
-  return `
+    return `
 <section class="app-view dashboard-page" data-view="dashboard" aria-label="Tableau de bord High Five">
     <div class="dashboard-shell"> 
         <aside class="dashboard-sidebar">
@@ -101,8 +101,8 @@ export function dashboardPage() {
 
                                 </div>
 
-                                <div class="match-row"> 
-                                    <span>NEON KINGS</span> 
+                                <div class="match-row2"> 
+                                    <div class="matchr1">NEON KINGS</div> 
                                     <strong>74</strong> 
                                 </div>
 
@@ -115,8 +115,8 @@ export function dashboardPage() {
                                     <strong>102</strong>
                                 </div>
 
-                                <div class="match-row"> 
-                                    <span>STEEL TITANS</span> 
+                                <div class="match-row2"> 
+                                    <div class="matchr1">STEEL TITANS</div> 
                                     <strong>98</strong>    
                                 </div>
 
@@ -135,7 +135,7 @@ export function dashboardPage() {
                                 <strong>--</strong>
                             </div>
 
-                            <div class="match-row"> 
+                            <div class="match-row match-row--winner"> 
                                 <span>APEX PREDATORS</span>    
                                 <strong>--</strong> 
                             </div>
@@ -148,9 +148,11 @@ export function dashboardPage() {
 
                 <div class="dashboard-lower-grid">
                     <section class="dashboard-panel dashboard-panel--standings">
+
                         <div class="dashboard-panel-header dashboard-panel-header--compact">
-                            <h2>CLASSEMENT DU GROUPE A</h2> <a href="#">CLASSEMENT COMPLET &rarr;</a>
+                            <h2>CLASSEMENT DU GROUPE A</h2> 
                         </div>
+
                         <div class="standings-table">
                             <div class="standings-head"> <span>POS</span> <span>ÉQUIPE</span> <span>V</span>
                                 <span>D</span> <span>PTS</span>
@@ -168,26 +170,27 @@ export function dashboardPage() {
                                 <span>8</span> <span>4</span>
                             </div>
                         </div>
+
                     </section>
                     <section class="dashboard-panel dashboard-panel--upcoming">
                         <div class="dashboard-panel-header">
                             <h2>À VENIR</h2>
                         </div>
                         <div class="upcoming-list">
-                            <div class="upcoming-card upcoming-card--live"> <span class="live-badge">● EN DIRECT</span>
+                            <div class="upcoming-card upcoming-card--live"> <div class="live-badge"> EN DIRECT T3</div>
                                 <div class="upcoming-scoreline">
-                                    <div> <span>SHADOWS</span> <strong>64</strong> </div>
+                                    <div class="upcoming-scoreline--left"> <span>SHADOWS</span> <span class="nbre1">64</span> </div>
                                     <div class="versus-label">VS</div>
-                                    <div class="upcoming-scoreline--right"> <span>PHANTOMS</span> <strong>58</strong>
+                                    <div class="upcoming-scoreline--right"> <span>PHANTOMS</span> <span class="nbre2">58</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="upcoming-card">
                                 <div class="upcoming-time"> <small>AUJOURD'HUI</small> <strong>20:00</strong> </div>
-                                <div class="upcoming-scoreline">
+                                <div class="upcoming-scoreline1">
                                     <div> <span>URBAN KNIGHTS</span> </div>
                                     <div class="versus-label">VS</div>
-                                    <div class="upcoming-scoreline--right"> <span>NEON KINGS</span> </div>
+                                    <div class="upcoming-scoreline1--right"> <span>NEON KINGS</span> </div>
                                 </div>
                             </div>
                             <div class="upcoming-card">
@@ -210,23 +213,23 @@ export function dashboardPage() {
 
 
 export function dashboardEvents() {
-  const logoutBtn = document.querySelector(".dashboard-logout");
+    const logoutBtn = document.querySelector(".dashboard-logout");
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
             clearCurrentUser();
-      window.navigate("login");
+            window.navigate("login");
+        });
+    }
+
+    const navItems = document.querySelectorAll(".dashboard-nav-item");
+
+    navItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            navItems.forEach(i => i.classList.remove("is-active"));
+            item.classList.add("is-active");
+        });
     });
-  }
-
-  const navItems = document.querySelectorAll(".dashboard-nav-item");
-
-  navItems.forEach(item => {
-    item.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      navItems.forEach(i => i.classList.remove("is-active"));
-      item.classList.add("is-active");
-    });
-  });
 }

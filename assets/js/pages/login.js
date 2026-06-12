@@ -118,7 +118,6 @@ export function loginEvents() {
       return;
     }
 
-    // navigation propre (SPA)
     window.navigate?.("dashboard");
   });
 

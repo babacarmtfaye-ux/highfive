@@ -44,7 +44,7 @@
 
 /* ── CALENDAR PANEL ─────────────────────────────────────────── */
 .cal-panel {
-    width: 645px;
+    width: 1000px;
     flex-shrink: 0;
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
