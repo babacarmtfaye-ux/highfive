@@ -1,21 +1,8 @@
-const USERS_KEY = "users";
-const CURRENT_USER_KEY = "currentUser";
-const DB_URL = new URL("../data/db.json", import.meta.url);
+const API_BASE_URL = "http://localhost:3001";
+const USERS_URL = `${API_BASE_URL}/users`;
 
 let dbUsersPromise = null;
-
-function readUsersFromStorage() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(USERS_KEY));
-    return Array.isArray(stored) ? sanitizeUsers(stored) : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeUsersToStorage(users) {
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
+let currentUser = null;
 
 function normalizeEmail(email) {
   return String(email || "").trim().toLowerCase();
@@ -36,39 +23,17 @@ function sanitizeUsers(users) {
     }));
 }
 
-function mergeUsers(primaryUsers, fallbackUsers) {
-  const merged = [];
-  const seenEmails = new Set();
-
-  for (const user of [...sanitizeUsers(primaryUsers), ...sanitizeUsers(fallbackUsers)]) {
-    const email = normalizeEmail(user?.email);
-    if (!email || seenEmails.has(email)) {
-      continue;
-    }
-
-    merged.push({
-      id: user.id,
-      name: String(user.name || "").trim(),
-      email,
-      password: String(user.password || "")
-    });
-    seenEmails.add(email);
-  }
-
-  return merged;
-}
-
 async function loadDbUsers() {
   if (!dbUsersPromise) {
-    dbUsersPromise = fetch(DB_URL)
+    dbUsersPromise = fetch(USERS_URL)
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Impossible de charger ${DB_URL}`);
+          throw new Error(`Impossible de charger ${USERS_URL}`);
         }
 
         return response.json();
       })
-      .then((data) => (Array.isArray(data?.users) ? data.users : []))
+      .then((data) => (Array.isArray(data) ? data : []))
       .catch(() => []);
   }
 
@@ -76,46 +41,11 @@ async function loadDbUsers() {
 }
 
 export async function ensureUsersSeeded() {
-  const storedUsers = readUsersFromStorage();
   const dbUsers = await loadDbUsers();
-  const mergedUsers = mergeUsers(storedUsers, dbUsers);
-
-  if (mergedUsers.length !== storedUsers.length) {
-    writeUsersToStorage(mergedUsers);
-  }
-
-  const currentUser = localStorage.getItem(CURRENT_USER_KEY);
-  if (currentUser) {
-    try {
-      const parsedCurrentUser = JSON.parse(currentUser);
-      const currentEmail = normalizeEmail(parsedCurrentUser?.email);
-      const currentUserIsValid = Boolean(currentEmail && mergedUsers.some((user) => normalizeEmail(user.email) === currentEmail));
-
-      if (!currentUserIsValid) {
-        localStorage.removeItem(CURRENT_USER_KEY);
-      }
-    } catch {
-      localStorage.removeItem(CURRENT_USER_KEY);
-    }
-  }
-
-  return mergedUsers;
+  return sanitizeUsers(dbUsers);
 }
 
 export async function getUsers() {
-  const storedUsers = readUsersFromStorage();
-
-  if (storedUsers.length > 0) {
-    const dbUsers = await loadDbUsers();
-    const mergedUsers = mergeUsers(storedUsers, dbUsers);
-
-    if (mergedUsers.length !== storedUsers.length) {
-      writeUsersToStorage(mergedUsers);
-    }
-
-    return mergedUsers;
-  }
-
   return ensureUsersSeeded();
 }
 
@@ -138,8 +68,17 @@ export async function registerUser(user) {
     password: String(user.password)
   };
 
-  const nextUsers = [...users, nextUser];
-  writeUsersToStorage(nextUsers);
+  const response = await fetch(USERS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(nextUser)
+  });
+
+  if (!response.ok) {
+    return { ok: false, error: "Impossible d'enregistrer le compte." };
+  }
 
   return { ok: true, user: nextUser };
 }
@@ -157,11 +96,11 @@ export async function authenticateUser(email, password) {
     return { ok: false, field: "password", error: "Mot de passe incorrect" };
   }
 
-  localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(matchedUser));
+  currentUser = matchedUser;
 
   return { ok: true, user: matchedUser };
 }
 
 export function clearCurrentUser() {
-  localStorage.removeItem(CURRENT_USER_KEY);
+  currentUser = null;
 }

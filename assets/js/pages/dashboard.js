@@ -1,3 +1,5 @@
+import { clearCurrentUser } from "../auth.js";
+
 export function dashboardPage() {
   return `
 <section class="app-view dashboard-page" data-view="dashboard" aria-label="Tableau de bord High Five">
@@ -11,60 +13,139 @@ export function dashboardPage() {
                     <p>Saison 2026</p>
                 </div>
             </div>
-            <nav class="dashboard-nav"> <a href="#" class="dashboard-nav-item is-active"> <span
-                        class="nav-icon nav-icon--grid" aria-hidden="true"><i
-                            class="fa-solid fa-table-cells"></i></span> TABLEAU DE BORD </a> <a href="#"
-                    class="dashboard-nav-item"> <span class="nav-icon" aria-hidden="true"><i
-                            class="fa-solid fa-users"></i></span> ÉQUIPES </a> <a href="#" class="dashboard-nav-item">
-                    <span class="nav-icon" aria-hidden="true"><i class="fa-regular fa-calendar"></i></span> CALENDRIER
-                </a> <a href="#" class="dashboard-nav-item"> <span class="nav-icon" aria-hidden="true"><i
-                            class="fa-solid fa-gear"></i></span> PARAMÈTRES </a> <a href="#" class="dashboard-nav-item">
-                    <span class="nav-icon"><i class="fa-solid fa-user"></i></span> PROFIL </a> </nav> <button
-                class="dashboard-logout" data-show-view="login">DÉCONNEXION</button>
-        </aside> 
+            <nav class="dashboard-nav"> 
+
+                <a href="#" class="dashboard-nav-item is-active" data-show-view="dashboard"> 
+                    <span class="nav-icon nav-icon--grid" aria-hidden="true">
+                        <i class="fa-solid fa-table-cells"></i>
+                    </span> 
+                    TABLEAU DE BORD 
+                </a> 
+                
+                <a href="#" class="dashboard-nav-item " data-show-view="equipe"> 
+                    <span class="nav-icon" aria-hidden="true">
+                        <i class="fa-solid fa-users"></i>
+                    </span> 
+                    ÉQUIPES 
+                </a>
+
+                <a href="#" class="dashboard-nav-item" data-show-view="calendrier">
+                    <span class="nav-icon" aria-hidden="true">
+                        <i class="fa-regular fa-calendar"></i>
+                    </span> 
+                    CALENDRIER
+                </a> 
+
+                <a href="#" class="dashboard-nav-item"> 
+                    <span class="nav-icon" aria-hidden="true">
+                        <i class="fa-solid fa-gear"></i>
+                    </span> 
+                    PARAMÈTRES 
+                </a> 
+                
+                <a href="#" class="dashboard-nav-item">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span> 
+                    PROFIL </a> 
+                </nav> 
+                
+                <button class="dashboard-logout" data-show-view="login">DÉCONNEXION</button>
+        </aside>
+
         <main class="dashboard-main"> 
+
             <header class="dashboard-topbar">
+
                 <div class="dashboard-topbar-title">HIGH FIVE</div>
-                <div class="dashboard-topbar-actions"> <button class="topbar-action topbar-action--search"
-                        aria-label="Rechercher"></button> <button class="topbar-action topbar-action--bell"
-                        aria-label="Notifications"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+
+                <div class="dashboard-topbar-actions"> 
+                    <button class="topbar-action topbar-action--search" aria-label="Rechercher"></button> 
+                    
+                    <button class="topbar-action topbar-action--bell" aria-label="Notifications"> 
+                        
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
                             <path d="M13.73 21a2 2 0 01-3.46 0"></path>
-                        </svg> </button> <img src="assets/images/kv.png" alt="Profil Utilisateur"
-                        class="dashboard-avatar" /> </div>
+                        </svg> 
+                    </button> 
+                    
+                    <img src="assets/images/kv.png" alt="Profil Utilisateur" class="dashboard-avatar" /> 
+                </div>
+
             </header>
+
             <div class="dashboard-content">
+
                 <section class="dashboard-panel dashboard-panel--championship">
+
                     <div class="dashboard-panel-header">
-                        <h2>TABLEAU DE CHAMPIONNAT</h2> <span class="status-chip">DEMI-FINALES</span>
+                        <h2>TABLEAU DE CHAMPIONNAT</h2> 
+                        <span class="status-chip">DEMI-FINALES</span>
                     </div>
+
                     <div class="dashboard-bracket">
+
                         <div class="dashboard-match-stack">
+
                             <div class="dashboard-match-card">
+
                                 <div class="match-row match-row--winner">
+
                                     <div style="display:flex;align-items:center;"> <span class="match-dot"></span>
                                         <span>METRO VIPERS</span>
-                                    </div> <strong>88</strong>
+                                    </div> 
+                                    
+                                    <strong>88</strong>
+
                                 </div>
-                                <div class="match-row"> <span>NEON KINGS</span> <strong>74</strong> </div>
+
+                                <div class="match-row"> 
+                                    <span>NEON KINGS</span> 
+                                    <strong>74</strong> 
+                                </div>
+
                             </div>
+
                             <div class="dashboard-match-card">
-                                <div class="match-row match-row--winner"> <span>APEX PREDATORS</span>
+
+                                <div class="match-row match-row--winner"> 
+                                    <span>APEX PREDATORS</span>
                                     <strong>102</strong>
                                 </div>
-                                <div class="match-row"> <span>STEEL TITANS</span> <strong>98</strong> </div>
+
+                                <div class="match-row"> 
+                                    <span>STEEL TITANS</span> 
+                                    <strong>98</strong>    
+                                </div>
+
                             </div>
+
                         </div>
+
                         <div class="bracket-connector"></div>
+
                         <div class="dashboard-final-card">
+
                             <div class="dashboard-final-title">🏆 MATCH FINAL</div>
-                            <div class="match-row match-row--winner"> <span>METRO VIPERS</span> <strong>--</strong>
+
+                            <div class="match-row match-row--winner"> 
+                                <span>METRO VIPERS</span> 
+                                <strong>--</strong>
                             </div>
-                            <div class="match-row"> <span>APEX PREDATORS</span> <strong>--</strong> </div>
+
+                            <div class="match-row"> 
+                                <span>APEX PREDATORS</span>    
+                                <strong>--</strong> 
+                            </div>
+
                         </div>
+
                     </div>
+
                 </section>
+
                 <div class="dashboard-lower-grid">
                     <section class="dashboard-panel dashboard-panel--standings">
                         <div class="dashboard-panel-header dashboard-panel-header--compact">
@@ -133,7 +214,7 @@ export function dashboardEvents() {
 
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("currentUser");
+            clearCurrentUser();
       window.navigate("login");
     });
   }

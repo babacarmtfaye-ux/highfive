@@ -1,22 +1,26 @@
 import { loginPage, loginEvents } from "./pages/login.js";
 import { signupPage, signupEvents } from "./pages/signup.js";
 import { dashboardPage } from "./pages/dashboard.js";
+import { teamPage } from "./pages/equipe.js";
+import { calendrierPage } from "./pages/calendrier.js";
 
 const app = document.querySelector("#app");
 
 const pages = {
   login: loginPage,
   signup: signupPage,
-  dashboard: dashboardPage
+  dashboard: dashboardPage,
+  equipe: teamPage,
+  calendrier: calendrierPage
 };
 
-export function navigate(page) {
+export async function navigate(page) {
   if (!pages[page]) {
     console.error("Page inconnue :", page);
     return;
   }
 
-  app.innerHTML = pages[page]();
+  app.innerHTML = await pages[page]();
 
   const activeView = app.querySelector(".app-view");
   if (activeView) {

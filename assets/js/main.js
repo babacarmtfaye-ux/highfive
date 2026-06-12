@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // démarrage
   await ensureUsersSeeded();
   const initialPage = window.location.hash.replace("#", "") || "login";
-  navigate(initialPage);
+  await navigate(initialPage);
 
   // fallback pour navigation depuis des pages non connectées à window.navigate
   window.addEventListener('app:navigate', (e) => {

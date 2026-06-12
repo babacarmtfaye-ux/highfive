@@ -1,0 +1,430 @@
+/* =============================================================
+   CALENDRIER PAGE — Styles spécifiques
+   ============================================================= */
+
+/* ── MAIN ───────────────────────────────────────────────────── */
+.cal-page .dashboard-main {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* ── HEADER (remplace topbar) ───────────────────────────────── */
+.cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 56px;
+    border-bottom: 1px solid var(--card-border);
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cal-header-left .dashboard-topbar-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2.5px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+/* ── CONTENT LAYOUT ─────────────────────────────────────────── */
+.cal-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 28px 32px;
+    align-items: start;
+    overflow-y: auto;
+}
+
+/* ── CALENDAR PANEL ─────────────────────────────────────────── */
+.cal-panel {
+    width: 645px;
+    flex-shrink: 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+/* Month nav */
+.cal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+}
+
+.cal-month-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    margin: 0;
+    line-height: 1;
+}
+
+.cal-nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: var(--border-radius-sm, 6px);
+    transition: color var(--transition-speed) ease;
+    line-height: 1;
+}
+
+.cal-nav-btn:hover {
+    color: var(--text-primary);
+}
+
+/* Grid : 7 colonnes */
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 1px solid var(--card-border);
+}
+
+/* Day-of-week header */
+.cal-dow {
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--card-border);
+}
+
+/* SAM / DIM headers orange */
+.cal-dow:nth-child(6),
+.cal-dow:nth-child(7) {
+    color: var(--accent-color);
+}
+
+/* Calendar cell */
+.cal-cell {
+    min-height: 110px;
+    padding: 8px 10px 6px;
+    border-right: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.cal-cell:nth-child(7n) {
+    border-right: none;
+}
+
+.cal-cell:hover {
+    background-color: rgba(255, 107, 43, 0.04);
+}
+
+/* Day number */
+.cal-day-num {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+/* Out-of-month cells */
+.cal-cell--out {
+    background-color: transparent;
+    opacity: 0.35;
+}
+
+.cal-cell--out .cal-day-num {
+    color: var(--text-muted);
+}
+
+/* Today highlight */
+.cal-cell--today {
+    border: 1px solid var(--accent-color);
+    background-color: rgba(255, 107, 43, 0.06);
+}
+
+.cal-cell--today .cal-day-num {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* SAT / SUN day numbers */
+.cal-cell--sat .cal-day-num,
+.cal-cell--sun .cal-day-num {
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+/* Event chip */
+.cal-event {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-radius: 3px;
+    padding: 3px 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cal-event--orange {
+    background-color: rgba(255, 107, 43, 0.15);
+    color: var(--accent-color);
+}
+
+.cal-event--default {
+    background-color: transparent;
+    color: var(--text-muted);
+    padding-left: 2px;
+    border-left: 2px solid var(--card-border);
+    border-radius: 0;
+}
+
+.cal-event-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+/* ── MATCHS DU JOUR SIDEBAR ─────────────────────────────────── */
+.cal-sidebar {
+    width: 215px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cal-sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    padding: 0 2px;
+}
+
+.cal-sidebar-header i {
+    color: var(--accent-color);
+    font-size: 16px;
+}
+
+/* Match card base */
+.cal-match-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Venue row */
+.cal-match-venue {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cal-match-venue > span:first-child {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+}
+
+/* LIVE badge */
+.cal-live-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(255, 107, 43, 0.12);
+    border: 1px solid rgba(255, 107, 43, 0.3);
+    border-radius: 50px;
+    padding: 3px 9px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+.cal-live-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    animation: pulse 1.4s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* Score row */
+.cal-match-score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.cal-match-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+}
+
+.cal-team-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    display: grid;
+    place-items: center;
+}
+
+.cal-team-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cal-team-name {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cal-match-score-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.cal-score {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.cal-match-meta {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* Match time badge */
+.cal-match-time {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-sm, 6px);
+    padding: 3px 10px;
+    letter-spacing: 1px;
+}
+
+/* Upcoming match row */
+.cal-match-upcoming {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.cal-team-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cal-team-pill-name {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.cal-team-pill-abbr {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 3px;
+    padding: 2px 6px;
+    letter-spacing: 0.5px;
+}
+
+.cal-vs {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .cal-content {
+        flex-direction: column;
+        padding: 20px 16px;
+    }
+
+    .cal-panel {
+        width: 100%;
+    }
+
+    .cal-sidebar {
+        width: 100%;
+    }
+
+    .cal-cell {
+        min-height: 70px;
+        padding: 6px;
+    }
+
+    .cal-month-title {
+        font-size: 24px;
+    }
+}

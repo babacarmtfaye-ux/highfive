@@ -1,0 +1,475 @@
+/* =============================================================
+   ÉQUIPE PAGE — Styles spécifiques à la page équipe
+   ============================================================= */
+
+/* ── MAIN CONTAINER ─────────────────────────────────────────── */
+.team-page .dashboard-main {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.team-page .dashboard-topbar {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* Wrapper qui aligne titre + body sur le même axe X */
+.team-content {
+    padding: 0 40px;
+    width: 100%;
+    max-width: 860px;
+    box-sizing: border-box;
+}
+
+/* ── PAGE HEADER ─────────────────────────────────────────────── */
+.team-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 28px 0 16px 0;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 24px;
+}
+
+.team-page-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.team-page-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 6px;
+}
+
+.dashboard-kicker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.dashboard-kicker::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.dashboard-page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 3px;
+    color: var(--text-primary);
+    line-height: 1;
+    margin: 0;
+}
+
+/* ── BOUTONS HEADER ──────────────────────────────────────────── */
+.dashboard-btn-cancel,
+.dashboard-btn-deploy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-sm, 6px);
+    cursor: pointer;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all var(--transition-speed) ease;
+    white-space: nowrap;
+}
+
+.dashboard-btn-cancel {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+}
+
+.dashboard-btn-cancel:hover {
+    border-color: var(--text-muted);
+}
+
+.dashboard-btn-deploy {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.dashboard-btn-deploy:hover {
+    background: var(--accent-color);
+    color: var(--text-dark, #111);
+}
+
+/* ── TWO-COLUMN BODY ─────────────────────────────────────────── */
+.team-body {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 20px;
+    align-items: start;
+    width: 100%;
+}
+
+/* ── LEFT COLUMN ─────────────────────────────────────────────── */
+.team-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Identity panel */
+.dashboard-panel-identity {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+}
+
+.dashboard-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin: 0 0 12px 0;
+}
+
+.dashboard-section-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--card-border);
+    border: none;
+    margin: 0 0 16px 0;
+}
+
+.dashboard-label-text {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.dashboard-input-teamname {
+    width: 100%;
+    background-color: var(--bg-secondary, #1a1a1a);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-sm, 6px);
+    padding: 10px 14px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.dashboard-emblem-label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.dashboard-upload {
+    border: 1px dashed var(--card-border);
+    border-radius: var(--border-radius-md, 8px);
+    padding: 28px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease;
+    color: var(--text-muted);
+}
+
+.dashboard-upload:hover {
+    border-color: var(--accent-color);
+}
+
+.dashboard-upload .upload-label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.dashboard-upload .upload-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Requirements box */
+.requirements-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 16px 18px;
+}
+
+.requirements-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.requirements-header span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.requirements-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── RIGHT COLUMN ─────────────────────────────────────────────── */
+.team-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.roster-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.roster-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dashboard-roster-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.dashboard-roster-count {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 50px;
+    padding: 4px 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.dashboard-btn-draft-player {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-sm, 6px);
+    cursor: pointer;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: transparent;
+    transition: all var(--transition-speed) ease;
+}
+
+.dashboard-btn-draft-player:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* ── PLAYERS GRID ─────────────────────────────────────────────── */
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+/* Base card */
+.player-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    min-height: 90px;
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.player-card:hover {
+    border-color: var(--card-hover-border);
+}
+
+/* Photo half */
+.player-card-photo-left {
+    width: 80px;
+    flex-shrink: 0;
+    background-color: #1e1e1e;
+    overflow: hidden;
+}
+
+.player-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Info half */
+.player-card-bg-right {
+    flex: 1;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* Position badge */
+.player-position,
+.player-position-sf,
+.player-position-c {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Name */
+.player-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin: 0;
+}
+
+/* Physical stats */
+.player-stats {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Close button */
+.player-card-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 10px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity var(--transition-speed) ease;
+    padding: 0;
+}
+
+.player-card-close:hover {
+    opacity: 1;
+}
+
+/* Add player card */
+.add-player-card {
+    background-color: var(--card-bg);
+    border: 1px dashed var(--card-border);
+    border-radius: var(--border-radius-lg);
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.add-player-card:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.add-player-card::before {
+    content: '+';
+    font-size: 24px;
+    font-weight: 300;
+    color: inherit;
+    line-height: 1;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .team-content {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+
+    .dashboard-page-title {
+        font-size: 36px;
+    }
+
+    .team-body {
+        grid-template-columns: 1fr;
+    }
+
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+}
