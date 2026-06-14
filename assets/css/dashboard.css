@@ -66,8 +66,9 @@ body {
 
 /* SIDEBAR — fixe à gauche, pleine hauteur */
 .dashboard-sidebar {
-    min-width: 175px;
-    flex: 1.8;
+    width: 340px;
+    min-width: 340px;
+    flex: none;
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--card-border);
     display: flex;

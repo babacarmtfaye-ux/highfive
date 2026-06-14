@@ -91,7 +91,7 @@ export async function calendrierPage() {
           <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-gear"></i></span>
           PARAMÈTRES
         </a>
-        <a href="#" class="dashboard-nav-item">
+        <a href="#" class="dashboard-nav-item" data-show-view="profil">
           <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
           PROFIL
         </a>

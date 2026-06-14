@@ -4,6 +4,7 @@ import { dashboardPage } from "./pages/dashboard.js";
 import { teamPage } from "./pages/equipe.js";
 import { calendrierPage } from "./pages/calendrier.js";
 import { parametresPage } from "./pages/parametres.js";
+import { profilPage } from "./pages/profil.js";
 
 const app = document.querySelector("#app");
 
@@ -13,7 +14,8 @@ const pages = {
   dashboard: dashboardPage,
   equipe: teamPage,
   calendrier: calendrierPage,
-  parametres: parametresPage
+  parametres: parametresPage,
+  profil: profilPage
 };
 
 export async function navigate(page) {

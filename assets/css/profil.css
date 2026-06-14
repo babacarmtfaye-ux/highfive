@@ -1,0 +1,339 @@
+/* =============================================================
+   PROFIL PAGE — Styles spécifiques
+   ============================================================= */
+
+/* ── OVERRIDE GLOBAL ─────────────────────────────────────────── */
+.profile-page.app-view.is-active {
+    display: flex !important;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.profile-page .dashboard-shell {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex: 1;
+}
+
+.profile-page .dashboard-main {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+.profile-page .dashboard-sidebar {
+    flex: none;
+    width: 340px;
+    min-width: 30px;
+}
+
+/* ── CONTENT WRAPPER ─────────────────────────────────────────── */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 24px 300px 0px 300px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── HERO BANNER ─────────────────────────────────────────────── */
+.profile-hero {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    flex-shrink: 0;
+}
+
+.profile-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, #2a1a10 0%, #0c0c0e 70%);
+}
+
+.profile-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(12,12,14,1) 0%, rgba(12,12,14,0.5) 50%, rgba(12,12,14,0.1) 100%);
+}
+
+.profile-hero-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 0 28px 24px 28px;
+    z-index: 2;
+}
+
+.profile-avatar-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.15);
+    flex-shrink: 0;
+    background-color: #1e1e1e;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.profile-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    padding-bottom: 4px;
+}
+
+.profile-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    line-height: 1;
+    margin: 0;
+}
+
+.profile-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.profile-meta i {
+    font-size: 11px;
+}
+
+.profile-meta-dot {
+    color: var(--text-muted);
+}
+
+.profile-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+}
+
+.profile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: var(--border-radius-md);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    white-space: nowrap;
+}
+
+.profile-btn--outline {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text-primary);
+}
+
+.profile-btn--outline:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.profile-btn--filled {
+    background: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    color: var(--text-dark);
+}
+
+.profile-btn--filled:hover {
+    opacity: 0.85;
+}
+
+/* ── SECTION ─────────────────────────────────────────────────── */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.profile-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-section-header i {
+    color: var(--accent-color);
+    font-size: 16px;
+}
+
+.profile-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1;
+}
+
+/* ── STATS GRID ──────────────────────────────────────────────── */
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.profile-stat-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.profile-stat-card:hover {
+    border-color: var(--card-hover-border);
+}
+
+.profile-stat-label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.profile-stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.profile-stat-card--accent .profile-stat-value {
+    color: var(--accent-color);
+}
+
+/* ── TROPHY GRID ─────────────────────────────────────────────── */
+.profile-trophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.profile-trophy-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.profile-trophy-card:hover {
+    border-color: var(--card-hover-border);
+}
+
+.profile-trophy-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 182, 147, 0.1);
+    border: 1px solid rgba(255, 182, 147, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.profile-trophy-icon i {
+    color: var(--accent-color);
+    font-size: 16px;
+}
+
+.profile-trophy-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-trophy-title {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.2px;
+}
+
+.profile-trophy-sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.2px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .profile-content {
+        padding: 16px 16px 32px 16px;
+        gap: 24px;
+    }
+
+    .profile-hero {
+        height: 220px;
+    }
+
+    .profile-name {
+        font-size: 28px;
+    }
+
+    .profile-stats-grid,
+    .profile-trophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-hero-body {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 16px 16px 16px;
+    }
+
+    .profile-hero-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

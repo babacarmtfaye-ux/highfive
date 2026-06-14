@@ -43,7 +43,7 @@ export function dashboardPage() {
                     PARAMÈTRES 
                 </a> 
                 
-                <a href="#" class="dashboard-nav-item">
+                <a href="#" class="dashboard-nav-item" data-show-view="profil">
                     <span class="nav-icon">
                         <i class="fa-solid fa-user"></i>
                     </span> 
