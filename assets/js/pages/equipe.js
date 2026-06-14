@@ -40,7 +40,7 @@ export async function teamPage() {
           <span class="nav-icon" aria-hidden="true"><i class="fa-regular fa-calendar"></i></span>
           CALENDRIER
         </a>
-        <a href="#" class="dashboard-nav-item">
+        <a href="#" class="dashboard-nav-item" data-show-view="parametres">
           <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-gear"></i></span>
           PARAMÈTRES
         </a>
@@ -140,11 +140,11 @@ export async function teamPage() {
 
               <div class="player-card">
                 <div class="player-card-photo-left">
-                  <img src="assets/images/players/marcus.png" alt="Marcus Reed" class="player-card-image" />
+                  <img src="assets/images/players/daiki.png" alt="Daiki Aomine" class="player-card-image" />
                 </div>
                 <div class="player-card-bg-right">
                   <span class="player-position">PG</span>
-                  <div class="player-name">MARCUS<br>REED</div>
+                  <div class="player-name">DAIKI<br>AOMINE</div>
                   <div class="player-stats">6'2" · 185 LBS</div>
                 </div>
                 <button class="player-card-close" aria-label="Retirer Marcus Reed">✕</button>

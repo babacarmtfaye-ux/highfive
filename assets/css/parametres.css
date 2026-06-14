@@ -1,0 +1,312 @@
+/* =============================================================
+   PARAMÈTRES PAGE — Styles spécifiques
+   ============================================================= */
+
+/* ── MAIN ───────────────────────────────────────────────────── */
+.settings-page .dashboard-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 40px;
+    overflow-y: auto;
+}
+
+/* ── HERO (titre + sous-titre) ──────────────────────────────── */
+.settings-hero {
+    padding: 36px 0 20px 0;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.settings-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 68px;
+    letter-spacing: 3px;
+    color: var(--text-primary);
+    line-height: 1;
+    margin: 0 0 8px 0;
+}
+
+.settings-subtitle {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+/* ── TWO-COLUMN BODY ─────────────────────────────────────────── */
+.settings-body {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 0 0 40px 0;
+    align-items: start;
+    flex: 1;
+    width: 780px;
+    align-self: center;
+}
+
+/* ── LEFT NAV ────────────────────────────────────────────────── */
+.settings-nav {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.settings-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--card-border);
+    cursor: pointer;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    transition: all var(--transition-speed) ease;
+    text-align: left;
+}
+
+.settings-nav-item:last-child {
+    border-bottom: none;
+}
+
+.settings-nav-item i {
+    font-size: 11px;
+    color: var(--text-muted);
+    transition: color var(--transition-speed) ease;
+}
+
+.settings-nav-item:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 107, 43, 0.04);
+}
+
+.settings-nav-item.is-active {
+    color: var(--text-primary);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 17px;
+    background-color: rgba(255, 107, 43, 0.06);
+}
+
+.settings-nav-item.is-active i {
+    color: var(--accent-color);
+}
+
+/* ── RIGHT CONTENT ───────────────────────────────────────────── */
+.settings-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+/* ── SETTINGS CARD ───────────────────────────────────────────── */
+.settings-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.settings-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin: 0;
+    line-height: 1;
+}
+
+.settings-card-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--card-border);
+    border: none;
+    margin: 0;
+}
+
+/* ── FORM FIELD ──────────────────────────────────────────────── */
+.settings-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.settings-label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.settings-input {
+    width: 100%;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-sm);
+    padding: 11px 16px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+    box-sizing: border-box;
+    transition: border-color var(--transition-speed) ease;
+    outline: none;
+}
+
+.settings-input:focus {
+    border-color: var(--accent-color);
+}
+
+/* ── TOGGLE ROW ──────────────────────────────────────────────── */
+.settings-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 4px 0;
+}
+
+.settings-toggle-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-toggle-label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.2px;
+}
+
+.settings-toggle-desc {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+}
+
+/* Toggle switch */
+.settings-toggle {
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.settings-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.settings-toggle-track {
+    display: block;
+    width: 44px;
+    height: 24px;
+    border-radius: 50px;
+    position: relative;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.settings-toggle-track::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform var(--transition-speed) ease;
+}
+
+.settings-toggle input:checked + .settings-toggle-track::after {
+    transform: translateX(20px);
+}
+
+/* Orange toggle */
+.settings-toggle-track--orange {
+    background-color: rgba(255,255,255,0.12);
+}
+
+.settings-toggle input:checked + .settings-toggle-track--orange {
+    background-color: var(--accent-color);
+}
+
+/* Purple toggle */
+.settings-toggle-track--purple {
+    background-color: rgba(255,255,255,0.12);
+}
+
+.settings-toggle input:checked + .settings-toggle-track--purple {
+    background-color: #7c6af7;
+}
+
+/* ── SAVE BUTTON ─────────────────────────────────────────────── */
+.settings-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.settings-btn-save {
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: 13px 28px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.settings-btn-save:hover {
+    opacity: 0.85;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .settings-page .dashboard-main {
+        padding: 0 20px;
+    }
+
+    .settings-title {
+        font-size: 42px;
+    }
+
+    .settings-body {
+        flex-direction: column;
+        width: 100%;
+        align-self: auto;
+    }
+
+    .settings-nav {
+        width: 100%;
+    }
+}

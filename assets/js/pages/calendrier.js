@@ -43,12 +43,12 @@ export async function calendrierPage() {
 
             cells += `
         <div class="cal-cell ${!isCurrentMonth ? "cal-cell--out" : ""} ${isToday ? "cal-cell--today" : ""} ${isSat ? "cal-cell--sat" : ""} ${isSun ? "cal-cell--sun" : ""}">
-          <span class="cal-day-num">${isCurrentMonth ? dayNum : ""}</span>
-          ${dayEvents.map(e => `
-            <div class="cal-event cal-event--${e.color}">
-              ${e.color === "orange" ? '<span class="cal-event-dot"></span>' : ""}
-              <span>${e.label}</span>
-            </div>
+            <span class="cal-day-num">${isCurrentMonth ? dayNum : ""}</span>
+            ${dayEvents.map(e => `
+                <div class="cal-event cal-event--${e.color}">
+                ${e.color === "orange" ? '<span class="cal-event-dot"></span>' : ""}
+            <span>${e.label}</span>
+        </div>
           `).join("")}
         </div>
       `;
@@ -87,7 +87,7 @@ export async function calendrierPage() {
           <span class="nav-icon" aria-hidden="true"><i class="fa-regular fa-calendar"></i></span>
           CALENDRIER
         </a>
-        <a href="#" class="dashboard-nav-item">
+        <a href="#" class="dashboard-nav-item" data-show-view="parametres">
           <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-gear"></i></span>
           PARAMÈTRES
         </a>

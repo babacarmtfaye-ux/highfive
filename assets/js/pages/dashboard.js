@@ -36,7 +36,7 @@ export function dashboardPage() {
                     CALENDRIER
                 </a> 
 
-                <a href="#" class="dashboard-nav-item"> 
+                <a href="#" class="dashboard-nav-item" data-show-view="parametres">
                     <span class="nav-icon" aria-hidden="true">
                         <i class="fa-solid fa-gear"></i>
                     </span> 
