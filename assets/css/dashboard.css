@@ -589,6 +589,10 @@ body {
     background-color: rgba(232, 142, 107, 0.02);
 }
 
+.upcoming-card--live[data-show-view] {
+    cursor: pointer;
+}
+
 .live-badge {
     display: inline-flex;
     align-items: center;

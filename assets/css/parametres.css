@@ -268,7 +268,9 @@
 /* ── SAVE BUTTON ─────────────────────────────────────────────── */
 .settings-actions {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
     width: 100%;
 }
 

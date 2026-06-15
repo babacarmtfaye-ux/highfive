@@ -151,7 +151,7 @@ export async function calendrierPage() {
           </div>
 
           <!-- Match LIVE -->
-          <div class="cal-match-card cal-match-card--live">
+          <div class="cal-match-card cal-match-card--live" data-show-view="match-live" role="link" tabindex="0" aria-label="Voir le match en direct Vipers vs Kings">
             <div class="cal-match-venue">
               <span>Terrain Central</span>
               <span class="cal-live-badge"><span class="cal-live-dot"></span>LIVE</span>

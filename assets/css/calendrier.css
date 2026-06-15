@@ -241,6 +241,16 @@
     gap: 12px;
 }
 
+.cal-match-card--live[data-show-view] {
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cal-match-card--live[data-show-view]:hover {
+    border-color: rgba(255, 107, 43, 0.5);
+    transform: translateX(2px);
+}
+
 /* Venue row */
 .cal-match-venue {
     display: flex;

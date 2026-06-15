@@ -1,5 +1,6 @@
 const API_BASE_URL = "http://localhost:3001";
 const USERS_URL = `${API_BASE_URL}/users`;
+const SESSION_KEY = "highfive_session";
 
 let dbUsersPromise = null;
 let currentUser = null;
@@ -21,6 +22,18 @@ function sanitizeUsers(users) {
       email: normalizeEmail(user.email),
       password: String(user.password || "")
     }));
+}
+
+function toPublicUser(user) {
+  return {
+    id: user.id,
+    name: String(user.name || "").trim(),
+    email: normalizeEmail(user.email)
+  };
+}
+
+function persistSession(user) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify(toPublicUser(user)));
 }
 
 async function loadDbUsers() {
@@ -83,6 +96,38 @@ export async function registerUser(user) {
   return { ok: true, user: nextUser };
 }
 
+export function getCurrentUser() {
+  return currentUser ? { ...currentUser } : null;
+}
+
+export async function restoreSession() {
+  if (currentUser) {
+    return currentUser;
+  }
+
+  const raw = localStorage.getItem(SESSION_KEY);
+  if (!raw) {
+    return null;
+  }
+
+  try {
+    const stored = JSON.parse(raw);
+    const users = await getUsers();
+    const matchedUser = users.find((user) => String(user.id) === String(stored.id));
+
+    if (!matchedUser || normalizeEmail(matchedUser.email) !== normalizeEmail(stored.email)) {
+      clearCurrentUser();
+      return null;
+    }
+
+    currentUser = toPublicUser(matchedUser);
+    return currentUser;
+  } catch {
+    clearCurrentUser();
+    return null;
+  }
+}
+
 export async function authenticateUser(email, password) {
   const users = await getUsers();
   const normalizedEmail = normalizeEmail(email);
@@ -96,11 +141,36 @@ export async function authenticateUser(email, password) {
     return { ok: false, field: "password", error: "Mot de passe incorrect" };
   }
 
-  currentUser = matchedUser;
+  currentUser = toPublicUser(matchedUser);
+  persistSession(matchedUser);
 
-  return { ok: true, user: matchedUser };
+  return { ok: true, user: currentUser };
 }
 
 export function clearCurrentUser() {
   currentUser = null;
+  localStorage.removeItem(SESSION_KEY);
+}
+
+export async function updateUser(userId, updates) {
+  const response = await fetch(`${USERS_URL}/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(updates)
+  });
+
+  if (!response.ok) {
+    return { ok: false, error: "Impossible de mettre à jour le compte." };
+  }
+
+  const updatedUser = await response.json();
+
+  if (currentUser && String(currentUser.id) === String(userId)) {
+    currentUser = toPublicUser({ ...currentUser, ...updatedUser });
+    persistSession(currentUser);
+  }
+
+  return { ok: true, user: toPublicUser(updatedUser) };
 }

@@ -177,7 +177,7 @@ export function dashboardPage() {
                             <h2>À VENIR</h2>
                         </div>
                         <div class="upcoming-list">
-                            <div class="upcoming-card upcoming-card--live"> <div class="live-badge"> EN DIRECT T3</div>
+                            <div class="upcoming-card upcoming-card--live" data-show-view="match-live" role="link" tabindex="0" aria-label="Voir le match en direct Shadows vs Phantoms"> <div class="live-badge"> EN DIRECT T3</div>
                                 <div class="upcoming-scoreline">
                                     <div class="upcoming-scoreline--left"> <span>SHADOWS</span> <span class="nbre1">64</span> </div>
                                     <div class="versus-label">VS</div>
