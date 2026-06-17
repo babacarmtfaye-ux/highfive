@@ -1,5 +1,5 @@
-import { getCurrentUser, updateUser } from "../auth.js";
-import { applyTheme, getUserPreferences, saveUserPreferences, showToast } from "../user-data.js";
+import { getCurrentUser, updateUser } from "../../auth.js";
+import { applyTheme, getUserPreferences, saveUserPreferences, showToast } from "../../user-data.js";
 
 function renderAccountPanel(user, prefs) {
   return `

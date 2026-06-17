@@ -1,4 +1,4 @@
-import { registerUser } from "../auth.js";
+import { registerUser } from "../../auth.js";
 
 export function signupPage() {
     return `
@@ -16,6 +16,14 @@ export function signupPage() {
                             id="full-name" name="full-name" type="text" placeholder="Ex: LeBron James"
                             autocomplete="name"> </div>
                 <small class="error-message" id="signup-name-error"></small>
+                </div>
+                <div class="signup-field-group"> <label for="signup-role">RÔLE</label>
+                    <div class="signup-field">
+                        <select id="signup-role" name="role" style="width: 100%; height: 100%; border: 0; outline: 0; padding: 0 16px 0 40px; color: #ebe8e3; background: #211f19; font-size: 12px; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none;">
+                            <option value="joueur" style="background: #211f19; color: #ebe8e3;">Joueur</option>
+                            <option value="coach" style="background: #211f19; color: #ebe8e3;">Coach (Manager)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="signup-field-group"> <label for="signup-email">ADRESSE E-MAIL</label>
                     <div class="signup-field"> <span class="signup-icon mail-icon" aria-hidden="true"></span> <input
@@ -56,6 +64,7 @@ export function signupEvents() {
   const nameInput = document.querySelector("#full-name");
   const passwordInput = document.querySelector("#signup-password");
   const confirmInput = document.querySelector("#confirm-password");
+  const roleInput = document.querySelector("#signup-role");
   const termsInput = document.querySelector('[name="terms"]');
 
   const nameError = document.querySelector("#signup-name-error");
@@ -64,7 +73,7 @@ export function signupEvents() {
   const confirmError = document.querySelector("#signup-confirm-error");
   const termsError = document.querySelector("#signup-terms-error");
 
-  if (!emailInput || !nameInput || !passwordInput || !confirmInput || !termsInput) return;
+  if (!emailInput || !nameInput || !passwordInput || !confirmInput || !roleInput || !termsInput) return;
 
   const clearErrors = () => {
     nameError.textContent = "";
@@ -83,6 +92,7 @@ export function signupEvents() {
     const name = nameInput.value.trim();
     const password = passwordInput.value;
     const confirmPassword = confirmInput.value;
+    const role = roleInput.value;
     const acceptedTerms = termsInput.checked;
 
     if (!name) {
@@ -122,7 +132,8 @@ export function signupEvents() {
     const result = await registerUser({
       name,
       email,
-      password
+      password,
+      role
     });
 
     if (!result.ok) {

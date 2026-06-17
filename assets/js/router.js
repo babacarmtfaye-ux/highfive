@@ -1,11 +1,11 @@
-import { loginPage, loginEvents } from "./pages/login.js";
-import { signupPage, signupEvents } from "./pages/signup.js";
-import { dashboardPage } from "./pages/dashboard.js";
-import { teamPage, teamEvents } from "./pages/equipe.js";
-import { calendrierPage } from "./pages/calendrier.js";
-import { parametresPage, parametresEvents } from "./pages/parametres.js";
-import { profilPage, profilEvents } from "./pages/profil.js";
-import { matchLivePage } from "./pages/match-live.js";
+import { loginPage, loginEvents } from "./pages/login/login.js";
+import { signupPage, signupEvents } from "./pages/signup/signup.js";
+import { dashboardPage, dashboardEvents } from "./pages/dashboard/dashboard.js";
+import { teamPage, teamEvents } from "./pages/equipe/equipe.js";
+import { calendrierPage } from "./pages/calendrier/calendrier.js";
+import { parametresPage, parametresEvents } from "./pages/parametres/parametres.js";
+import { profilPage, profilEvents } from "./pages/profil/profil.js";
+import { matchLivePage } from "./pages/match-live/match-live.js";
 import { clearCurrentUser, getCurrentUser } from "./auth.js";
 
 const app = document.querySelector("#app");
@@ -53,7 +53,7 @@ export async function navigate(page) {
   window.navigate = navigate;
 
   attachNavLinks();
-  attachPageEvents(page);
+  await attachPageEvents(page);
 
   if (window.location.hash.replace("#", "") !== page) {
     window.location.hash = page;
@@ -85,10 +85,11 @@ function attachNavLinks() {
   });
 }
 
-function attachPageEvents(page) {
+async function attachPageEvents(page) {
   if (page === "signup") signupEvents();
   if (page === "login") loginEvents();
-  if (page === "equipe") teamEvents();
+  if (page === "dashboard") dashboardEvents();
+  if (page === "equipe") await teamEvents();
   if (page === "parametres") parametresEvents();
   if (page === "profil") profilEvents();
 }

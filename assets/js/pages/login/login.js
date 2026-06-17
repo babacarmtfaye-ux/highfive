@@ -1,4 +1,4 @@
-import { authenticateUser } from "../auth.js";
+import { authenticateUser } from "../../auth.js";
 
 export function loginPage() {
   return `

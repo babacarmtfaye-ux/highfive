@@ -1,4 +1,4 @@
-import { clearCurrentUser } from "../auth.js";
+import { clearCurrentUser } from "../../auth.js";
 
 export function dashboardPage() {
     return `

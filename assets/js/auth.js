@@ -20,7 +20,8 @@ function sanitizeUsers(users) {
       id: user.id,
       name: String(user.name || "").trim(),
       email: normalizeEmail(user.email),
-      password: String(user.password || "")
+      password: String(user.password || ""),
+      role: user.role || "joueur"
     }));
 }
 
@@ -28,7 +29,8 @@ function toPublicUser(user) {
   return {
     id: user.id,
     name: String(user.name || "").trim(),
-    email: normalizeEmail(user.email)
+    email: normalizeEmail(user.email),
+    role: user.role || "joueur"
   };
 }
 
@@ -78,7 +80,8 @@ export async function registerUser(user) {
     id: Date.now(),
     name: String(user.name).trim(),
     email,
-    password: String(user.password)
+    password: String(user.password),
+    role: user.role || "joueur"
   };
 
   const response = await fetch(USERS_URL, {
@@ -92,6 +95,8 @@ export async function registerUser(user) {
   if (!response.ok) {
     return { ok: false, error: "Impossible d'enregistrer le compte." };
   }
+
+  dbUsersPromise = null;
 
   return { ok: true, user: nextUser };
 }

@@ -20,6 +20,9 @@ const DEFAULT_PROFILE = {
   position: "Ailier fort",
   number: "12",
   avatarUrl: "assets/images/kv.png",
+  bio: "Joueur passionné de basketball.",
+  height: "190",
+  weight: "85",
   stats: {
     matches: 124,
     mvp: 15,

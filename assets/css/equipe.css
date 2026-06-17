@@ -473,3 +473,57 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ── REGISTERED PLAYERS ─────────────────────────────────────── */
+.registered-players-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 16px 18px;
+}
+
+.registered-player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.registered-player-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-md);
+    background: var(--panel-bg);
+}
+
+.registered-player-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.registered-player-main strong {
+    color: var(--text-primary);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.registered-player-main span {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+.registered-player-status {
+    color: var(--accent-color);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
